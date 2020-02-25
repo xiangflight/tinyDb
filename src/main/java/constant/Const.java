@@ -1,4 +1,4 @@
-package Constant;
+package constant;
 
 /**
  * @author xiangdotzhaoAtwoqutechcommacom

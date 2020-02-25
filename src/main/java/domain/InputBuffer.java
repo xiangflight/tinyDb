@@ -1,7 +1,7 @@
 package domain;
 
-import Constant.Const;
-import Constant.Status;
+import constant.Const;
+import constant.Status;
 
 /**
  * @author xiangdotzhaoAtwoqutechcommacom
@@ -15,7 +15,7 @@ public class InputBuffer {
     private InputBuffer(String input) {
         if (input == null) {
             System.out.print("Error reading input\n");
-            System.exit(Status.EXIT_FAILURE);
+            System.exit(Status.EXIT_FAILURE.code());
         }
         this.buffer = input;
     }
@@ -30,5 +30,9 @@ public class InputBuffer {
 
     public boolean exit() {
         return Const.EXIT_STRING_INTERNAL.equals(this.buffer);
+    }
+
+    public boolean notEmpty() {
+        return !buffer.isEmpty();
     }
 }

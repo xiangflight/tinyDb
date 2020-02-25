@@ -1,5 +1,5 @@
-import Constant.Const;
-import Constant.Status;
+import constant.Const;
+import constant.Status;
 import domain.InputBuffer;
 
 import java.util.Scanner;
@@ -24,8 +24,9 @@ public class ReplModule {
             String input = scanner.nextLine();
             InputBuffer inputBuffer = InputBuffer.newInstance(input);
             if (inputBuffer.exit()) {
-                System.exit(Status.EXIT_SUCCESS);
-            } else {
+                System.exit(Status.EXIT_SUCCESS.code());
+            }
+            if (inputBuffer.notEmpty()) {
                 System.out.printf(Const.UNRECOGNIZED_NOTE, inputBuffer.getBuffer());
             }
         }
