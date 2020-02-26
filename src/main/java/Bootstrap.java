@@ -1,4 +1,7 @@
+import component.Repl;
 import constant.Const;
+
+import java.util.Scanner;
 
 /**
  * @author xiangdotzhaoAtwoqutechcommacom
@@ -11,8 +14,10 @@ public class Bootstrap {
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println(Const.JVM_SHUTDOWN_TIP)));
 
-        ReplModule repl = ReplModule.newInstance();
-        repl.process();
+        Scanner scanner = new Scanner(System.in);
+        Repl repl = Repl.newInstance(scanner);
+
+        repl.start();
     }
 
 }
