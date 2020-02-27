@@ -37,7 +37,7 @@ public class Executor {
     }
 
     /**
-     * how to get data from table
+     * how to get data from table todo
      *
      * @param statement get data
      * @return execute result
@@ -47,7 +47,7 @@ public class Executor {
     }
 
     /**
-     * how to insert, how to serialize data
+     * how to insert, how to serialize data todo
      *
      * @param statement get data from statement
      * @return execute result
