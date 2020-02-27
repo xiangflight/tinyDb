@@ -13,7 +13,11 @@ public enum PrepareResult {
     /**
      * fail
      */
-    PREPARE_UNRECOGNIZED_STATEMENT
+    PREPARE_UNRECOGNIZED_STATEMENT,
+    /**
+     * syntax error
+     */
+    PREPARE_SYNTAX_ERROR;
 
 
 }

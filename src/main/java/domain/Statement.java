@@ -12,10 +12,13 @@ import java.util.Objects;
 public class Statement {
 
     private volatile static Statement statement;
+
     private StatementType type;
 
-    private Statement() {
+    private Row row;
 
+    private Statement() {
+        row = new Row();
     }
 
     public static Statement getInstance() {
@@ -31,5 +34,27 @@ public class Statement {
 
     public void setType(StatementType type) {
         this.type = type;
+    }
+
+    /**
+     * 将输入的字符串转化为 statement
+     *
+     * @param buffer 输入 buffer
+     * @return true if transfer successfully
+     */
+    public boolean transfer(InputBuffer buffer) {
+        String[] elements = buffer.getBuffer().split(" ");
+        final int validLen = 4;
+        if (elements.length != validLen) {
+            return false;
+        }
+        try {
+            this.row.setId(Integer.parseInt(elements[1]));
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        this.row.setUsername(elements[2]);
+        this.row.setEmail(elements[3]);
+        return true;
     }
 }

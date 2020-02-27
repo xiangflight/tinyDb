@@ -68,6 +68,9 @@ public class Tokenizer {
     PrepareResult prepareStatement(InputBuffer buffer, Statement statement) {
         if (buffer.isInsertStatement()) {
             statement.setType(StatementType.STATEMENT_INSERT);
+            if (statement.transfer(buffer)) {
+                return PrepareResult.PREPARE_SYNTAX_ERROR;
+            }
             return PrepareResult.PREPARE_SUCCESS;
         }
         if (buffer.isSelectStatement()) {
