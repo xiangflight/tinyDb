@@ -1,7 +1,8 @@
 package component;
 
+import constant.ExecuteResult;
 import domain.Statement;
-import util.PromptUtil;
+import domain.Table;
 
 /**
  * @author xiangdotzhaoAtwoqutechcommacom
@@ -10,17 +11,33 @@ import util.PromptUtil;
 
 public class Executor {
 
+    private Table table;
+
+    private Executor() {
+        table = new Table();
+    }
+
+    public static Executor getInstance() {
+        return new Executor();
+    }
 
 
-    public void executeStatement(Statement statement) {
+    public ExecuteResult executeStatement(Statement statement) {
         switch (statement.getType()) {
             case STATEMENT_INSERT:
-                PromptUtil.println("This is where we would do an insert.");
-                break;
+                return executeInsert(statement);
             case STATEMENT_SELECT:
-                PromptUtil.println("This is where we would do a select.");
-                break;
+                return executeSelect(statement);
             default:
         }
+        throw new UnsupportedOperationException("unsupported operation");
+    }
+
+    private ExecuteResult executeSelect(Statement statement) {
+        return ExecuteResult.EXECUTE_SUCCESS;
+    }
+
+    private ExecuteResult executeInsert(Statement statement) {
+        return ExecuteResult.EXECUTE_SUCCESS;
     }
 }

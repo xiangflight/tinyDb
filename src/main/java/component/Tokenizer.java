@@ -22,7 +22,7 @@ public class Tokenizer {
     public Tokenizer() {
         inputBuffer = InputBuffer.getInstance();
         statement = Statement.getInstance();
-        executor = new Executor();
+        executor = Executor.getInstance();
     }
 
     public void process(String input) {
@@ -45,15 +45,24 @@ public class Tokenizer {
         switch (prepareStatement(inputBuffer, statement)) {
             case PREPARE_SUCCESS:
                 break;
+            case PREPARE_SYNTAX_ERROR:
+                PromptUtil.println("Syntax error. Could not parse statement.");
+                return;
             case PREPARE_UNRECOGNIZED_STATEMENT:
                 PromptUtil.printf(Const.UNRECOGNIZED_COMMAND, inputBuffer.getBuffer());
                 return;
             default:
         }
 
-        executor.executeStatement(statement);
-
-        PromptUtil.println(Const.EXECUTE_NOTICE);
+        switch (executor.executeStatement(statement)) {
+            case EXECUTE_SUCCESS:
+                PromptUtil.println(Const.EXECUTE_NOTICE);
+                break;
+            case EXECUTE_TABLE_FULL:
+                PromptUtil.println("Error: Table full.");
+                break;
+            default:
+        }
     }
 
     MetaCommandResult processMetaCommand(InputBuffer buffer) {

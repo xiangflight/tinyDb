@@ -1,5 +1,7 @@
 package domain;
 
+import util.PromptUtil;
+
 /**
  * @author xiangdotzhaoAtwoqutechcommacom
  * @date 2020/2/27
@@ -23,5 +25,9 @@ public class Row {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void show() {
+        PromptUtil.printf("(%d, %s, %s)\n", this.id, this.username, this.email);
     }
 }
