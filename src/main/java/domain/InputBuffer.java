@@ -1,10 +1,9 @@
 package domain;
 
 import constant.StatementType;
+import constant.TipEnum;
 
 import java.util.Objects;
-
-import static constant.Const.EXIT_STRING_INTERNAL;
 
 /**
  * @author xiangdotzhaoAtwoqutechcommacom
@@ -44,7 +43,7 @@ public class InputBuffer {
     }
 
     public boolean exit() {
-        return Objects.equals(EXIT_STRING_INTERNAL, buffer);
+        return Objects.equals(TipEnum.EXIT.getTip(), buffer);
     }
 
     public boolean isInsertStatement() {

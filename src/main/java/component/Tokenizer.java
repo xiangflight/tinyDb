@@ -36,7 +36,7 @@ public class Tokenizer {
                 case META_COMMAND_SUCCESS:
                     return;
                 case META_COMMAND_UNRECOGNIZED_COMMAND:
-                    PromptUtil.printf(Const.UNRECOGNIZED_META_COMMAND, inputBuffer.getBuffer());
+                    PromptUtil.printf(TipEnum.UNRECOGNIZED_META_COMMAND.getTip(), inputBuffer.getBuffer());
                     return;
                 default:
             }
@@ -46,20 +46,20 @@ public class Tokenizer {
             case PREPARE_SUCCESS:
                 break;
             case PREPARE_SYNTAX_ERROR:
-                PromptUtil.println("Syntax error. Could not parse statement.");
+                PromptUtil.println(TipEnum.COMMAND_SYNTAX_ERROR.getTip());
                 return;
             case PREPARE_UNRECOGNIZED_STATEMENT:
-                PromptUtil.printf(Const.UNRECOGNIZED_COMMAND, inputBuffer.getBuffer());
+                PromptUtil.printf(TipEnum.UNRECOGNIZED_NORMAL_COMMAND.getTip(), inputBuffer.getBuffer());
                 return;
             default:
         }
 
         switch (executor.executeStatement(statement)) {
             case EXECUTE_SUCCESS:
-                PromptUtil.println(Const.EXECUTE_NOTICE);
+                PromptUtil.println(TipEnum.EXECUTED.getTip());
                 break;
             case EXECUTE_TABLE_FULL:
-                PromptUtil.println("Error: Table full.");
+                PromptUtil.println(TipEnum.TABLE_FULL_ERROR.getTip());
                 break;
             default:
         }

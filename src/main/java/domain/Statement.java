@@ -46,15 +46,19 @@ public class Statement {
         String[] elements = buffer.getBuffer().split(" ");
         final int validLen = 4;
         if (elements.length != validLen) {
-            return false;
+            return true;
         }
         try {
             this.row.setId(Integer.parseInt(elements[1]));
         } catch (NumberFormatException e) {
-            return false;
+            return true;
         }
         this.row.setUsername(elements[2]);
         this.row.setEmail(elements[3]);
-        return true;
+        return false;
+    }
+
+    public Row getRow() {
+        return row;
     }
 }

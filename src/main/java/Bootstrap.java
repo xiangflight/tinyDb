@@ -1,5 +1,5 @@
 import component.Repl;
-import constant.Const;
+import constant.TipEnum;
 
 import java.util.Scanner;
 
@@ -12,7 +12,7 @@ public class Bootstrap {
 
     public static void main(String[] args) {
 
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println(Const.JVM_SHUTDOWN_TIP)));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println(TipEnum.JVM_SHUTDOWN.getTip())));
 
         Scanner scanner = new Scanner(System.in);
         Repl repl = Repl.newInstance(scanner);

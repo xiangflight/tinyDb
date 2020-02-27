@@ -15,19 +15,31 @@ public class Row {
 
     private String email;
 
+    public void show() {
+        PromptUtil.printf("(%d, %s, %s)\n", getId(), getUsername(), getEmail());
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getEmail() {
+        return email;
     }
 
-    public void show() {
-        PromptUtil.printf("(%d, %s, %s)\n", this.id, this.username, this.email);
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

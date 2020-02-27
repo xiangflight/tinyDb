@@ -7,7 +7,7 @@ package util;
 
 public class PromptUtil {
 
-    public static void printf(String format, Object ... args) {
+    public static void printf(String format, Object... args) {
         System.out.printf(format, args);
     }
 

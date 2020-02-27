@@ -13,6 +13,6 @@ public enum ExecuteResult {
     /**
      * 执行失败
      */
-    EXECUTE_TABLE_FULL;
+    EXECUTE_TABLE_FULL
 
 }

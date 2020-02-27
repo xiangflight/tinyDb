@@ -1,6 +1,6 @@
 package component;
 
-import constant.Const;
+import constant.TipEnum;
 import util.PromptUtil;
 
 import java.util.Scanner;
@@ -35,7 +35,7 @@ public class Repl {
     }
 
     private void prompt() {
-        PromptUtil.print(Const.PROMPT_TIP);
+        PromptUtil.print(TipEnum.PROMPT.getTip());
     }
 
 }

@@ -17,7 +17,7 @@ public enum PrepareResult {
     /**
      * syntax error
      */
-    PREPARE_SYNTAX_ERROR;
+    PREPARE_SYNTAX_ERROR
 
 
 }
