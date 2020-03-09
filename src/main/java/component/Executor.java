@@ -5,6 +5,9 @@ import domain.Row;
 import domain.Statement;
 import domain.Table;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * @author xiangdotzhaoAtwoqutechcommacom
  * @date 2020/2/26
@@ -35,17 +38,22 @@ public class Executor {
     }
 
     /**
-     * how to get data from table todo
+     * how to get data from table
      *
      * @param statement get data
      * @return execute result
      */
     private ExecuteResult executeSelect(Statement statement) {
+        Arrays.stream(table.getPages())
+                .filter(Objects::nonNull)
+                .forEach(page -> Arrays.stream(page.getRows())
+                        .filter(Objects::nonNull)
+                        .forEach(Row::show));
         return ExecuteResult.EXECUTE_SUCCESS;
     }
 
     /**
-     * how to insert, how to serialize data todo
+     * how to insert, how to serialize data
      *
      * @param statement get data from statement
      * @return execute result
@@ -55,6 +63,7 @@ public class Executor {
             return ExecuteResult.EXECUTE_TABLE_FULL;
         }
         Row row = statement.getRow();
+        table.insert(row);
         return ExecuteResult.EXECUTE_SUCCESS;
     }
 }

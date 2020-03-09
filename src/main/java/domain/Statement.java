@@ -1,6 +1,8 @@
 package domain;
 
+import com.sun.xml.internal.xsom.impl.scd.Step;
 import constant.StatementType;
+import javafx.concurrent.Worker;
 
 import java.util.Objects;
 
@@ -22,10 +24,7 @@ public class Statement {
     }
 
     public static Statement getInstance() {
-        if (Objects.isNull(statement)) {
-            statement = new Statement();
-        }
-        return statement;
+        return new Statement();
     }
 
     public StatementType getType() {

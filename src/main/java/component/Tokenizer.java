@@ -2,6 +2,7 @@ package component;
 
 import constant.*;
 import domain.InputBuffer;
+import domain.PrepareResult;
 import domain.Statement;
 import util.PromptUtil;
 
@@ -16,12 +17,10 @@ import static constant.MetaCommandResult.META_COMMAND_UNRECOGNIZED_COMMAND;
 public class Tokenizer {
 
     private InputBuffer inputBuffer;
-    private Statement statement;
     private Executor executor;
 
     public Tokenizer() {
         inputBuffer = InputBuffer.getInstance();
-        statement = Statement.getInstance();
         executor = Executor.getInstance();
     }
 
@@ -42,7 +41,8 @@ public class Tokenizer {
             }
         }
 
-        switch (prepareStatement(inputBuffer, statement)) {
+        PrepareResult result = prepareStatement(inputBuffer);
+        switch (result.getPrepareStateResult()) {
             case PREPARE_SUCCESS:
                 break;
             case PREPARE_SYNTAX_ERROR:
@@ -54,7 +54,7 @@ public class Tokenizer {
             default:
         }
 
-        switch (executor.executeStatement(statement)) {
+        switch (executor.executeStatement(result.getStatement())) {
             case EXECUTE_SUCCESS:
                 PromptUtil.println(TipEnum.EXECUTED.getTip());
                 break;
@@ -74,18 +74,19 @@ public class Tokenizer {
         }
     }
 
-    PrepareResult prepareStatement(InputBuffer buffer, Statement statement) {
+    PrepareResult prepareStatement(InputBuffer buffer) {
+        Statement statement = Statement.getInstance();
         if (buffer.isInsertStatement()) {
             statement.setType(StatementType.STATEMENT_INSERT);
             if (statement.transfer(buffer)) {
-                return PrepareResult.PREPARE_SYNTAX_ERROR;
+                return PrepareResult.getInstance(statement, PrepareStateResult.PREPARE_SYNTAX_ERROR);
             }
-            return PrepareResult.PREPARE_SUCCESS;
+            return PrepareResult.getInstance(statement, PrepareStateResult.PREPARE_SUCCESS);
         }
         if (buffer.isSelectStatement()) {
             statement.setType(StatementType.STATEMENT_SELECT);
-            return PrepareResult.PREPARE_SUCCESS;
+            return PrepareResult.getInstance(statement, PrepareStateResult.PREPARE_SUCCESS);
         }
-        return PrepareResult.PREPARE_UNRECOGNIZED_STATEMENT;
+        return PrepareResult.getInstance(statement, PrepareStateResult.PREPARE_UNRECOGNIZED_STATEMENT);
     }
 }

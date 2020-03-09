@@ -5,7 +5,7 @@ package constant;
  * @date 2020/2/26
  */
 
-public enum PrepareResult {
+public enum PrepareStateResult {
     /**
      * success
      */
