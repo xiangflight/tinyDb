@@ -1,5 +1,7 @@
 package domain;
 
+import constant.TableConstant;
+
 /**
  * @author xiangdotzhaoAtwoqutechcommacom
  * @date 2020/2/27
@@ -7,14 +9,19 @@ package domain;
 
 public class Table {
 
-    private int numRows;
+    /**
+     * 表的行数
+     */
+    private int numOfRows;
 
-    public int getNumRows() {
-        return numRows;
-    }
+    /**
+     * 表的页数
+     */
+    private Page[] pages;
 
-    public void setNumRows(int numRows) {
-        this.numRows = numRows;
+    public Table() {
+        numOfRows = 0;
+        pages = new Page[TableConstant.TABLE_MAX_PAGES];
     }
 
     public boolean isFull() {

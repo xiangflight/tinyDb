@@ -15,10 +15,6 @@ public class Row {
 
     private String email;
 
-    public void show() {
-        PromptUtil.printf("(%d, %s, %s)\n", getId(), getUsername(), getEmail());
-    }
-
     public int getId() {
         return id;
     }
@@ -41,5 +37,9 @@ public class Row {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void show() {
+        PromptUtil.printf("(%d, %s, %s)\n", getId(), getUsername(), getEmail());
     }
 }

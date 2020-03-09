@@ -13,11 +13,9 @@ import domain.Table;
 public class Executor {
 
     private Table table;
-    private Serializer serializer;
 
     private Executor() {
         table = new Table();
-        serializer = Serializer.getInstance();
     }
 
     public static Executor getInstance() {
@@ -57,7 +55,6 @@ public class Executor {
             return ExecuteResult.EXECUTE_TABLE_FULL;
         }
         Row row = statement.getRow();
-        serializer.serialize(table, row);
         return ExecuteResult.EXECUTE_SUCCESS;
     }
 }
