@@ -1,10 +1,6 @@
 package domain;
 
-import com.sun.xml.internal.xsom.impl.scd.Step;
 import constant.StatementType;
-import javafx.concurrent.Worker;
-
-import java.util.Objects;
 
 /**
  * @author xiangdotzhaoAtwoqutechcommacom

@@ -42,6 +42,7 @@ public class Tokenizer {
         }
 
         PrepareResult result = prepareStatement(inputBuffer);
+
         switch (result.getPrepareStateResult()) {
             case PREPARE_SUCCESS:
                 break;

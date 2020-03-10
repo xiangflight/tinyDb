@@ -4,6 +4,7 @@
 ## 使用
 
 1. git clone git@github.com:xiangflight/tinyDb.git
+...
 
 ## 开发
 
@@ -16,6 +17,7 @@
 1. 完成一个简单的 REPL
 2. 实现一个简单的 SQL 编译器和虚拟机
 3. 一个内存、只追加的、单表数据库
+4. 首个测试 (跳过)
 
 ## 参考
 
